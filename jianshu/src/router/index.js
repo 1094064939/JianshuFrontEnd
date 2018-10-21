@@ -88,6 +88,11 @@ export default new Router({
           path: '/u',
           component: resolve => require(['../components/page/User.vue'], resolve),
           meta: {title: '个人中心'}
+        },
+        {
+          path: '/p/:id',
+          component: resolve => require(['../components/page/Article.vue'], resolve),
+          meta: {title: '文章详情'}
         }
       ]
     },
@@ -96,6 +101,16 @@ export default new Router({
       path: '/write',
       component: resolve => require(['../components/page/Write.vue'], resolve),
       meta: {title: '写文章'}
+    },
+    {
+      path: '/sign_in',
+      component: resolve => require(['../components/common/Signin.vue'], resolve),
+      meta: {title: '登录'}
+    },
+    {
+      path: '/sign_up',
+      component: resolve => require(['../components/common/Signup.vue'], resolve),
+      meta: {title: '注册'}
     }
   ]
 })

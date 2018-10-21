@@ -42,10 +42,10 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-item href="#">Aa</b-nav-item>
         <b-nav-item v-if="token === null">
-          <router-link to="/signin">登录</router-link>
+          <router-link to="/sign_in">登录</router-link>
         </b-nav-item>
         <b-nav-item v-if="token === null">
-        <router-link to="/signup">注册</router-link>
+        <router-link to="/sign_up">注册</router-link>
       </b-nav-item>
         <b-nav-item-dropdown right v-if="token != null">
           <!-- Using button-content slot -->

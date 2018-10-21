@@ -9,6 +9,7 @@
         <p class="info">{{authors.info}}</p>
         <p class="guanzhu">+关注</p>
       </div>
+      <router-link to="/users"><div class="seeall"><span>查看全部 ></span></div></router-link>
     </div>
 </template>
 
@@ -76,5 +77,21 @@ img {
   .main {
     margin: 30px 0;
   }
+  .seeall{
+    border-radius: 2px;
+    background-color: #f7f7f7;
+    border: solid;
+    border-width: 0.5px;
+    border-color: #f6f6f6;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  a:link{
+    color: black;
 
+  }
 </style>

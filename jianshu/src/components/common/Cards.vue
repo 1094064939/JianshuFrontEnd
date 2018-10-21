@@ -1,7 +1,8 @@
 <template>
     <div class="cardgroup">
-      <b-card v-for="cardss in cardList" :key="cardss.id" :title=cardss.title>
+      <b-card v-for="cardss in cardList">
         <div style="display:inline;float: left">
+          <router-link :to="'/p/'+ cardss.id"><h4>{{cardss.title}}</h4></router-link>
           <p class="card-text">
             {{cardss.main}}
           </p><br/>
@@ -88,5 +89,11 @@
   }
   b-card {
     border-width: 1px 0;
+  }
+  a{
+    text-decoration: none;
+  }
+  a:link{
+    color: black;
   }
 </style>

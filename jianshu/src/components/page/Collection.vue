@@ -44,6 +44,18 @@
         </div>
       </b-col>
       <b-col>
+        <div class="gonggao">
+          <p class="he">专题公告</p>
+          <p class="mainer">{{topic.summary}}</p>
+        </div>
+        <div class="guanzhuderen">
+          <p>关注的人(3)</p>
+          <ul>
+            <li v-for="lists2 in topic.fansList">
+              <img :src="lists2.avatar">
+            </li>
+          </ul>
+        </div>
       </b-col>
     </b-row>
   </div>
@@ -123,7 +135,15 @@
           "fansList":[
             {
               "authorId":3,
-              "avatar":"11.png"
+              "avatar":"https://upload.jianshu.io/users/upload_avatars/1789560/15a1334d66d9.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"
+            },
+            {
+              "authorId":4,
+              "avatar":"https://upload.jianshu.io/users/upload_avatars/1211570/a02b7997-3ccb-4857-9e95-9fbd9deca9ee.png?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240",
+
+            },{
+              "authorId":5,
+              "avatar":"https://upload.jianshu.io/users/upload_avatars/2954739/376acc56-1115-4f85-bb7f-d99a285325d9.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/240/h/240"
             }
           ]
         };
@@ -178,5 +198,25 @@
   }
   .menu {
     margin-bottom: -10px;
+  }
+  .he {
+    color: gray;
+  }
+  .mainer{
+    font-family: "宋体";
+    color: black;
+  }
+  .guanzhuderen {
+    margin-top: 60px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-bottom-color: gainsboro;
+    border-top-color: gainsboro;
+  }
+  .guanzhuderen ul li img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin-right: -25px;
   }
 </style>
