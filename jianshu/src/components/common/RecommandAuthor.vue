@@ -6,7 +6,7 @@
       <div class="main" v-for="authors in authorList">
           <a><img v-bind:src=authors.avatar></a>
         <p class="name">{{authors.name}}</p>
-        <p class="info">{{authors.info}}</p>
+        <p class="info">写了{{authors.wordsCount}}字，{{authors.likeCount}}喜欢</p>
         <p class="guanzhu">+关注</p>
       </div>
       <router-link to="/users"><div class="seeall"><span>查看全部 ></span></div></router-link>
@@ -22,27 +22,32 @@
               {
                 "avatar":"//upload.jianshu.io/users/upload_avatars/6305091/b1912e7b-20d1-41a6-94f3-5a0d1c81fc5a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
                 "name":"只有一半影子的人",
-                "info":"写了422.5k字 · 6.6k喜欢"
+                "wordsCount":"422.5k",
+                "likeCount":"33.1k"
               },
               {
                 "avatar":"//upload.jianshu.io/users/upload_avatars/1835526/9bc600ce-7672-42b8-b03b-1a779593dd45.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
                 "name":"简书版权",
-                "info":" 写了491.2k字 · 42.7k喜欢"
+                "wordsCount":" 491.2k",
+                "likeCount":"42.7k"
               },
               {
                 "avatar":"//upload.jianshu.io/users/upload_avatars/3730494/4a86a2a7-d5b9-47f1-969a-d8ef4711488b.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
                 "name":"格列柯南",
-                "info":"写了596.7k字 · 14.7k喜欢"
+                "wordsCount":" 491.2k",
+                "likeCount":"42.7k"
               },
               {
                 "avatar":"//upload.jianshu.io/users/upload_avatars/6305091/b1912e7b-20d1-41a6-94f3-5a0d1c81fc5a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
                 "name":"只有一半影子的人",
-                "info":"写了422.5k字 · 6.6k喜欢"
+                "wordsCount":" 491.2k",
+                "likeCount":"42.7k"
               },
               {
                 "avatar":"//upload.jianshu.io/users/upload_avatars/6305091/b1912e7b-20d1-41a6-94f3-5a0d1c81fc5a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
                 "name":"只有一半影子的人",
-                "info":"写了422.5k字 · 6.6k喜欢"
+                "wordsCount":" 491.2k",
+                "likeCount":"42.7k"
               }
             ]
           }

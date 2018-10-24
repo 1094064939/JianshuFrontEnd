@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import jquery from 'jquery'
 import bootstrap from 'bootstrap-vue'
+import axios from 'axios'
 
 Vue.use(jquery)
 Vue.use(bootstrap)
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

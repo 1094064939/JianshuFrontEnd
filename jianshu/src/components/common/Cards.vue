@@ -1,6 +1,6 @@
 <template>
     <div class="cardgroup">
-      <b-card v-for="cardss in cardList">
+      <b-card v-for="cardss in cardList" :key="cardss.id">
         <div style="display:inline;float: left">
           <router-link :to="'/p/'+ cardss.id"><h4>{{cardss.title}}</h4></router-link>
           <p class="card-text">

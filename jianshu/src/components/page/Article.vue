@@ -2,10 +2,14 @@
     <div class="main">
       <div class="contain">
         <h2>{{mes.title}}</h2>
+        <img :src="mes.avatar" class="ava">
         <div class="personalmessage">
-          <img :src="mes.avatar" class="ava">
+            <a>{{mes.author}}</a>
+            <b-button class="guanzhu" size="sm" variant="success"><span>+关注</span></b-button><br>
+            <a class="bottom">{{mes.time}} 字数{{mes.points}} 阅读{{mes.read}} 评论{{mes.comments}} 喜欢{{mes.likes}}</a>
         </div><br>
         <p>{{mes.main}}</p>
+        <img :src="mes.pic1">
       </div>
     </div>
 </template>
@@ -27,6 +31,7 @@
                 "read":55555,
                 "points":948,
                 "avatar":"https://upload.jianshu.io/users/upload_avatars/13133049/e3726c14-dcb1-46d9-a153-1f82aadd88dd.jpeg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96",
+                "pic1":"https://upload-images.jianshu.io/upload_images/13133049-9b2823632cd3c8b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640/format/webp",
                 "href":"//upload-images.jianshu.io/upload_images/13133049-9b2823632cd3c8b1.png?imageMogr2/auto-orient/strip|imageView2/1/w/150/h/120"
               }
           }
@@ -52,11 +57,20 @@
     border-radius: 50px;
     width: 50px;
     height: 50px;
+    float: left;
+    margin-top: 40px;
   }
   .personalmessage {
-    float: left;
-  }
-  p{
     margin-top: 50px;
+    margin-left: 70px;
+  }
+  .guanzhu {
+    height: 20px;
+    border-radius: 10px;
+  }
+  span{
+    margin: 0 auto;
+  }
+  .bottom {
   }
 </style>
