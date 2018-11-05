@@ -3,10 +3,12 @@
       <div class="head">
         <p>推荐作者</p>
       </div>
-      <div class="main" v-for="authors in authorList">
-          <a><img v-bind:src=authors.avatar></a>
-        <p class="name">{{authors.name}}</p>
-        <p class="info">写了{{authors.wordsCount}}字，{{authors.likeCount}}喜欢</p>
+      <div class="main" v-for="index in arr" :key="authorList[index].userId">
+        <router-link :to="'/u/' + authorList[index].userId">
+          <a><img v-bind:src=authorList[index].avatar></a>
+        </router-link>
+        <p class="name">{{authorList[index].nickname}}</p>
+        <p class="info">写了{{authorList[index].wordsCount}}字，{{authorList[index].likeCount}}喜欢</p>
         <p class="guanzhu">+关注</p>
       </div>
       <router-link to="/users"><div class="seeall"><span>查看全部 ></span></div></router-link>
@@ -18,39 +20,32 @@
         name: "RecommandAuthor",
       data(){
           return {
-            authorList:[
-              {
-                "avatar":"//upload.jianshu.io/users/upload_avatars/6305091/b1912e7b-20d1-41a6-94f3-5a0d1c81fc5a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
-                "name":"只有一半影子的人",
-                "wordsCount":"422.5k",
-                "likeCount":"33.1k"
-              },
-              {
-                "avatar":"//upload.jianshu.io/users/upload_avatars/1835526/9bc600ce-7672-42b8-b03b-1a779593dd45.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
-                "name":"简书版权",
-                "wordsCount":" 491.2k",
-                "likeCount":"42.7k"
-              },
-              {
-                "avatar":"//upload.jianshu.io/users/upload_avatars/3730494/4a86a2a7-d5b9-47f1-969a-d8ef4711488b.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
-                "name":"格列柯南",
-                "wordsCount":" 491.2k",
-                "likeCount":"42.7k"
-              },
-              {
-                "avatar":"//upload.jianshu.io/users/upload_avatars/6305091/b1912e7b-20d1-41a6-94f3-5a0d1c81fc5a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
-                "name":"只有一半影子的人",
-                "wordsCount":" 491.2k",
-                "likeCount":"42.7k"
-              },
-              {
-                "avatar":"//upload.jianshu.io/users/upload_avatars/6305091/b1912e7b-20d1-41a6-94f3-5a0d1c81fc5a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp",
-                "name":"只有一半影子的人",
-                "wordsCount":" 491.2k",
-                "likeCount":"42.7k"
-              }
-            ]
+            authorList:[],
+            arr:[0,1,2,3,4]
           }
+      },
+      created() {
+        var that = this
+        this.$http
+          .get('http://localhost:8080/user/hot')
+          .then(function (response) {
+            // alert(JSON.stringify(response.data.data));
+            that.authorList = response.data.data;
+          })
+      },
+      methods:{
+        replace(){
+          var a = [];
+          var j= 0;
+          while(j<5){
+            var b = Math.floor((Math.random()*this.authorList.length));
+            if(a.indexOf(b)==-1){
+              a.push(b);
+              j++;
+            }
+          };
+          this.arr = a;
+        }
       }
     }
 </script>

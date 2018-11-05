@@ -14,8 +14,8 @@
         <div class="wirte">
           <div>
             <br class="input-group">
-              <input type="text" class="form-control" placeholder="手机号或邮箱"><br>
-              <input type="text" class="form-control" placeholder="密码">
+              <input type="text" class="form-control" placeholder="手机号或邮箱" v-model="email"><br>
+              <input type="text" class="form-control" placeholder="密码" v-model="password">
               <div class="rember">
                 <div class="fore">
                   <input type="checkbox" ><span>记住我</span>
@@ -25,7 +25,7 @@
                 </div>
               </div><br>
               <div class="btn">
-                <b-button variant="primary" size="lg">登录</b-button>
+                <b-button variant="primary" size="lg" @click="onClick">登录</b-button>
               </div>
             <div class="line_02"><span>社交账号登录</span></div>
             <ul class="row">
@@ -42,7 +42,25 @@
 
 <script>
   export default {
-        name: "Signin"
+        name: "Signin",
+    data() {
+      return {
+        email: '',
+        password: ''
+      }
+    },
+    methods: {
+      onClick() {
+        var that = this;
+        this.$http
+          .post('http://localhost:8080/user/sign_in', {"email": this.email, "password": this.password})
+          .then(function (response) {
+            // alert(JSON.stringify(response.data.data));
+            localStorage.setItem("loginUser", JSON.stringify(response.data.data))
+            that.$router.push("/")
+          })
+      }
+    }
     }
 </script>
 

@@ -85,7 +85,7 @@ export default new Router({
         },
         {
           // 个人中心组件
-          path: '/u',
+          path: '/u/:id',
           component: resolve => require(['../components/page/User.vue'], resolve),
           meta: {title: '个人中心'}
         },

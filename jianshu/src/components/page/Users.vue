@@ -4,16 +4,13 @@
     <div class="main">
         <div class="row">
           <div class="col-md-4" v-for="listss in Lists">
-            <router-link :to="/c/ + listss.id">
+            <router-link :to="/u/ + listss.id">
               <div class="box">
-                <img :src="listss.avatar">
-                <h4>{{listss.title}}</h4>
-                <p>{{listss.info}}</p>
+                <img :src="listss.avatar" class="ava">
+                <h4>{{listss.nickname}}</h4>
+                <p class="jianjie">{{listss.description}}</p>
                 <b-button class="btn1" variant="success">+ 关注</b-button>
                 <div class="line"><span>最近更新</span></div>
-                <span>{{listss.update1}}</span><br>
-                <span>{{listss.update2}}</span><br>
-                <span>{{listss.update3}}</span>
               </div>
             </router-link>
           </div>
@@ -28,76 +25,18 @@
     name: "Users",
     data(){
       return{
-        Lists: [
-          {
-            "id":1,
-            "avatar":"//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
-            "title":"简书电影",
-            "info":"欢迎关注公众号简宝玉( 公众号ID : jianshu4321 )后台回复“指南”获取玩转简书绝密...",
-            "articles":2287,
-            "likes":4432,
-            "update1":"唐朝那些猫事儿1",
-            "update2":"唐朝那些猫事儿2",
-            "update3":"唐朝那些猫事儿3",
-          },
-          {
-            "id":2,
-            "avatar":"//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
-            "title":"简书电影",
-            "info":"欢迎关注公众号简宝玉( 公众号ID : jianshu4321 )后台回复“指南”获取玩转简书绝密...",
-            "articles":2287,
-            "likes":4432,
-            "update1":"唐朝那些猫事儿1",
-            "update2":"唐朝那些猫事儿2",
-            "update3":"唐朝那些猫事儿3",
-          },
-          {
-            "id":3,
-            "avatar":"//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
-            "title":"简书电影",
-            "info":"欢迎关注公众号简宝玉( 公众号ID : jianshu4321 )后台回复“指南”获取玩转简书绝密...",
-            "articles":2287,
-            "likes":4432,
-            "update1":"唐朝那些猫事儿1",
-            "update2":"唐朝那些猫事儿2",
-            "update3":"唐朝那些猫事儿3",
-          },
-          {
-            "id":4,
-            "avatar":"//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
-            "title":"简书电影",
-            "info":"欢迎关注公众号简宝玉( 公众号ID : jianshu4321 )后台回复“指南”获取玩转简书绝密...",
-            "articles":2287,
-            "likes":4432,
-            "update1":"唐朝那些猫事儿1",
-            "update2":"唐朝那些猫事儿2",
-            "update3":"唐朝那些猫事儿3",
-          },
-          {
-            "id":5,
-            "avatar":"//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
-            "title":"简书电影",
-            "info":"欢迎关注公众号简宝玉( 公众号ID : jianshu4321 )后台回复“指南”获取玩转简书绝密...",
-            "articles":2287,
-            "likes":4432,
-            "update1":"唐朝那些猫事儿1",
-            "update2":"唐朝那些猫事儿2",
-            "update3":"唐朝那些猫事儿3",
-          },
-          {
-            "id":6,
-            "avatar":"//upload.jianshu.io/collections/images/21/20120316041115481.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/64/h/64",
-            "title":"简书电影",
-            "info":"欢迎关注公众号简宝玉( 公众号ID : jianshu4321 )后台回复“指南”获取玩转简书绝密...",
-            "articles":2287,
-            "likes":4432,
-            "update1":"唐朝那些猫事儿1",
-            "update2":"唐朝那些猫事儿2",
-            "update3":"唐朝那些猫事儿3",
-          }
-        ]
+        Lists: []
       }
-    }
+    },
+    created() {
+      var that = this
+      this.$http
+        .get('http://localhost:8080/user/hot')
+        .then(function (response) {
+          // alert(JSON.stringify(response.data.data));
+          that.Lists = response.data.data;
+        })
+    },
   }
 </script>
 
@@ -109,6 +48,7 @@
   .box {
     background: #f7f7f7;
     border-radius: 10px;
+    height: auto;
   }
   a {
     text-decoration: none;
@@ -117,9 +57,11 @@
   a:link {
     background: black;
   }
-  img {
+  .ava {
     margin-top: -30px;
-    border-radius: 10px;
+    border-radius: 40px;
+    width: 80px;
+    height: 80px;
   }
   .row {
     margin-top: 50px;
@@ -130,6 +72,7 @@
   .btn1 {
     width: 100px;
     border-radius: 30px;
+    margin-top: 30px;
   }
   .hhh {
     width: 100%;
@@ -149,5 +92,8 @@
     top: -8px;
     background: #f7f7f7;
     padding: 0 20px;
+  }
+  .jianjie {
+    height: 40px;
   }
 </style>
